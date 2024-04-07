@@ -26,11 +26,11 @@ class LabourGov:
         time.sleep(2)
         self.driver.find_element(By.XPATH,"//a[contains(text(),'Download(221.53 KB)')]").click()
         time.sleep(5)
-        try:
-            webdriver.ActionChains(self.driver).send_keys(Keys.ENTER).perform()
-        except:
-            print("Not able to inspect OK button")
-
+        alert = self.driver.switch_to.alert
+        alert.accept()
+        print("Monthly Progress Report downloaded")
+        time.sleep(10)    
+        
     def close(self):
         self.driver.quit()
 
